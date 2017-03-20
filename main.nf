@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
  
-params.read1 = "$workflow.repository/data/wgs/mt_1.fq.gz"
-params.read2 = "$workflow.repository/data/wgs/mt_2.fq.gz"
+params.read1 = "$baseDir/data/wgs/mt_1.fq.gz"
+params.read2 = "$baseDir/data/wgs/mt_2.fq.gz"
 
-params.genome = "$workflow.repository/data/seq/hg19.fa"
+params.genome = "$baseDir/data/seq/hg19.fa"
 
 fq_read1 = file(params.read1)
 fq_read2 = file(params.read2)
