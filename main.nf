@@ -3,7 +3,7 @@
 params.read1 = "$baseDir/data/wgs/mt_1.fq.gz"
 params.read2 = "$baseDir/data/wgs/mt_2.fq.gz"
 
-params.genome = "$baseDir/data/seq/hg19.fa"
+params.genome = "/home/ubuntu/.nextflow/assets/brainstorm/bwa-nextflow-benchmark/data/seq/hg19.fa"
 
 fq_read1 = file(params.read1)
 fq_read2 = file(params.read2)
