@@ -2,6 +2,8 @@
  
 params.read1 = "$baseDir/data/wgs/mt_1.fq.gz"
 params.read2 = "$baseDir/data/wgs/mt_2.fq.gz"
+params.threads = 1
+params.sortmem = "1G"
 
 params.genome = "$baseDir/data/seq/hg19.fa"
 
@@ -23,6 +25,19 @@ process align {
     file outfile
 
     """
-	bwa mem -M -t 1 ${genome} ${fq_read1} ${fq_read2} > outfile
+	bwa mem -M -t ${params.threads} ${genome} ${fq_read1} ${fq_read2} > outfile
     """
+}
+
+process sort {
+
+	input:
+	file outfile
+
+	output:
+	file result
+
+	"""
+	samtools sort -n -@ ${params.threads} -m ${params.sortmem} -o result outfile
+	"""
 }

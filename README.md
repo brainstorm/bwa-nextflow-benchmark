@@ -7,17 +7,15 @@ Locally
 On the AWS cluster
 ==================
 
-    apt-get install openjdk-8-jre bwa graphviz
+    apt-get install openjdk-8-jre bwa samtools graphviz
     ./nextflow run brainstorm/bwa-nextflow-benchmark -with-timeline timeline.html -with-trace -with-dag flowchart.png
 
 
 TODO
 ====
 
-* Test on raijin
-* Add samtools sort:
-samtools sort  -@ 16 -m 768M -T /mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmppN1MkM/control_downsample-sort-80000001_160000000-sorttmp-spl -o /mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmpx5WRJU/control_downsample-sort-80000001_160000000-sr.bam -) --discordantFile >(/mnt/work/bcbio/galaxy/../anaconda/bin/samtools sort  -@ 16 -m 768M -T /mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmppN1MkM/control_downsample-sort-80000001_160000000-sorttmp-disc -o
-/mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmpnsnTaV/control_downsample-sort-80000001_160000000-disc.bam -) | /mnt/work/bcbio/galaxy/../anaconda/bin/samtools sort -n -@ 16 -m 1G -T /mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmppN1MkM/control_downsample-sort-80000001_160000000-sorttmp-full -o /mnt/work/icgc_mb/mb_workflow/work/bcbiotx/tmppN1MkM/control_downsample-sort-80000001_160000000.bam 
-
+* ~~Test on raijin (PBS Pro HPC system)~~
+* ~~Add samtools sort~~
 * Ansible deployment?
+* Test on kops deployed kubernetes cluster.
 * Piping/channels process to compare with normal I/O process
