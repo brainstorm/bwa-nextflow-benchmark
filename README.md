@@ -22,5 +22,5 @@ TODO
 ====
 
 * Ansible deployment after `nextflow cloud create`?
-* Test on kops deployed kubernetes cluster.
+* ~~Test on kops deployed kubernetes cluster~~
 * Piping/channels process to compare with normal I/O process
