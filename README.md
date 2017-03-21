@@ -21,8 +21,6 @@ On a HPC cluster
 TODO
 ====
 
-* ~~Test on raijin (PBS Pro HPC system)~~
-* ~~Add samtools sort~~
 * Ansible deployment after `nextflow cloud create`?
 * Test on kops deployed kubernetes cluster.
 * Piping/channels process to compare with normal I/O process
