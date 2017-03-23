@@ -26,7 +26,7 @@ process align {
     file outfile
 
     """
-	bwa mem -M -t ${params.threads} ${genome} ${fq_read1} ${fq_read2} > outfile
+	bwa mem -M -t ${params.threads} ${genome} ${fq_read1} ${fq_read2} | samtools view -bS - > outfile
     """
 }
 
