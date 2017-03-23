@@ -26,9 +26,28 @@ Sample run:
 
     time nextflow run main.nf -with-timeline timeline.html -with-trace -with-dag flowchart.png -profile cluster --read1 /g/data/gx8/projects/ICGC_MB/data/control_MB99_downsample-1.fastq.gz --read2 /g/data/gx8/projects/ICGC_MB/data/control_MB99_downsample-2.fastq.gz --threads 64
 
+
+On a Kubernetes cluster
+=======================
+
+Install [kubectl](https://kubernetes.io/docs/tasks/kubectl/install/) then [kops (Kubernetes OPerationS)](https://github.com/kubernetes/kops/blob/master/docs/install.md), then follow [Nivenly](https://www.nivenly.com/kops-1-5-1/) k8s setup and [operations](https://www.nivenly.com/2nd-hour/). YMMV but I launch it like this now:
+
+	kops create cluster \
+		--node-count 1 \
+		--zones ap-southeast-2a \
+		--master-zones ap-southeast-2a \
+		--dns-zone umccr.nopcode.org \
+		--node-size t2.small \
+		--master-size t2.small \
+		--topology private \
+		--networking calico \
+		--bastion \
+		cluster.umccr.nopcode.org --yes
+
+That is, for non-production testing purposes, with a single AZ to reduce costs.
+
 TODO
 ====
 
 * Ansible deployment after `nextflow cloud create`?
-* ~~Test on kops deployed kubernetes cluster~~
 * Piping/channels process to compare with normal I/O process
