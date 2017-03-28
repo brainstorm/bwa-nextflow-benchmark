@@ -48,6 +48,37 @@ Install [kubectl](https://kubernetes.io/docs/tasks/kubectl/install/) then [kops 
 
 That is, for non-production testing purposes, with a single AZ to reduce costs.
 
+
+Plain benchmarks
+================
+
+AWS:
+
+Using Nextflow
+--------------
+
+	[main] Version: 0.7.15-r1140
+	[main] CMD: bwa mem -M -t 32 data/seq/hg19.fa /mnt/work/icgc_mb/data/control_MB99_downsample-1.fastq.gz /mnt/work/icgc_mb/data/control_MB99_downsample-2.fastq.gz
+	[main] Real time: 18923.516 sec; CPU: 599486.676 sec
+
+	real    315m23.609s
+	user    9926m45.216s
+	sys     64m41.536s
+
+Without Nextflow
+----------------
+
+	
+	$ time samtools view -@ 32 -bS vanilla_bwa_run.sam > vanilla_bwa_run.bam
+
+	real    208m17.284s
+	user    1086m22.328s
+	sys     107m55.372s
+
+
+
+
+
 TODO
 ====
 
