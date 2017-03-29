@@ -52,21 +52,17 @@ That is, for non-production testing purposes, with a single AZ to reduce costs.
 Plain benchmarks
 ================
 
-AWS:
+AWS
+---
 
-Using Nextflow
---------------
+    $ time bwa mem -M -t 32 data/seq/hg19.fa /mnt/work/icgc_mb/data/control_MB99_downsample-1.fastq.gz /mnt/work/icgc_mb/data/control_MB99_downsample-2.fastq.gz > vanilla_bwa_run.sam
+    [main] Version: 0.7.15-r1140
+    [main] CMD: bwa mem -M -t 32 data/seq/hg19.fa /mnt/work/icgc_mb/data/control_MB99_downsample-1.fastq.gz /mnt/work/icgc_mb/data/control_MB99_downsample-2.fastq.gz
+    [main] Real time: 19522.095 sec; CPU: 604843.360 sec
 
-	[main] Version: 0.7.15-r1140
-	[main] CMD: bwa mem -M -t 32 data/seq/hg19.fa /mnt/work/icgc_mb/data/control_MB99_downsample-1.fastq.gz /mnt/work/icgc_mb/data/control_MB99_downsample-2.fastq.gz
-	[main] Real time: 18923.516 sec; CPU: 599486.676 sec
-
-	real    315m23.609s
-	user    9926m45.216s
-	sys     64m41.536s
-
-Without Nextflow
-----------------
+    real    325m22.271s
+    user    9976m23.400s
+    sys     104m20.124s
 
 	
 	$ time samtools view -@ 32 -bS vanilla_bwa_run.sam > vanilla_bwa_run.bam
@@ -76,6 +72,19 @@ Without Nextflow
 	sys     107m55.372s
 
 
+	(with ulimit -n 65535):
+
+	$ time samtools sort -m2G -@ 32 -o vanilla_bwa_run-sorted.bam vanilla_bwa_run.bam                                               
+	[bam_sort_core] merging from 544 files...
+
+	real    281m46.054s
+	user    1259m7.888s
+	sys     1306m51.124s
+
+HPC
+---
+
+	
 
 
 
