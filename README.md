@@ -83,7 +83,7 @@ AWS
 
 HPC
 ---
-
+	$ qsub -I -lwalltime=48:00:00 -lmem=128GB -lncpus=28 -q normalbw -lsoftware=bcbio
     $ time bwa mem -M -t 32 data/seq/hg19.fa ../../ICGC_MB/data/control_MB99_downsample-1.fastq.gz ../../ICGC_MB/data/control_MB99_downsample-2.fastq.gz > vanilla_bwa_run.sam
 
     [main] Version: 0.7.15-r1140
@@ -94,7 +94,17 @@ HPC
     user    7719m20.631s
     sys     241m20.201s
 
+	$ ls -alh vanilla_bwa_run.sam
+	-rw-r----- 1 rg3930 gx8 748G Mar 31 10:14 vanilla_bwa_run.sam
 
+    $ time samtools view -@ 32 -bS vanilla_bwa_run.sam > vanilla_bwa_run.bam
+
+    real    154m9.494s
+    user    742m16.300s
+    sys     31m49.917s
+
+	$ ls -alh vanilla_bwa_run.bam
+	-rw-r----- 1 rg3930 gx8 238G Mar 31 20:21 vanilla_bwa_run.bam
 
 TODO
 ====
