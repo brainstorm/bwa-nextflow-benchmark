@@ -84,7 +84,15 @@ AWS
 HPC
 ---
 
-	
+    $ time bwa mem -M -t 32 data/seq/hg19.fa ../../ICGC_MB/data/control_MB99_downsample-1.fastq.gz ../../ICGC_MB/data/control_MB99_downsample-2.fastq.gz > vanilla_bwa_run.sam
+
+    [main] Version: 0.7.15-r1140
+    [main] CMD: bwa mem -M -t 32 data/seq/hg19.fa ../../ICGC_MB/data/control_MB99_downsample-1.fastq.gz ../../ICGC_MB/data/control_MB99_downsample-2.fastq.gz
+    [main] Real time: 39361.396 sec; CPU: 477640.669 sec
+
+    real    656m9.688s
+    user    7719m20.631s
+    sys     241m20.201s
 
 
 
