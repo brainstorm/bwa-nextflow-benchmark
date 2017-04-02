@@ -84,6 +84,16 @@ AWS
 HPC
 ---
 	$ qsub -I -lwalltime=48:00:00 -lmem=128GB -lncpus=28 -q normalbw -lsoftware=bcbio
+
+     time bwa mem -M -t 28 data/seq/hg19.fa ../../ICGC_MB/data/control_MB99_100x-1.fastq.gz ../../ICGC_MB/data/control_MB99_100x-2.fastq.gz > vanin.logwa_run.sam >& bwa_mem_ru
+
+     real    302m26.869s
+     user    7779m9.526s
+     sys     67m42.815s
+
+More cores than allocated
+--------------------------
+
     $ time bwa mem -M -t 32 data/seq/hg19.fa ../../ICGC_MB/data/control_MB99_downsample-1.fastq.gz ../../ICGC_MB/data/control_MB99_downsample-2.fastq.gz > vanilla_bwa_run.sam
 
     [main] Version: 0.7.15-r1140
@@ -105,6 +115,14 @@ HPC
 
 	$ ls -alh vanilla_bwa_run.bam
 	-rw-r----- 1 rg3930 gx8 238G Mar 31 20:21 vanilla_bwa_run.bam
+
+    $ time samtools sort -m2G -@ 32 -o vanilla_bwa_run-sorted.bam vanilla_bwa_run.bam
+	[bam_sort_core] merging from 544 files...
+
+	real    180m46.791s
+	user    977m50.893s
+	sys     80m34.281s
+
 
 TODO
 ====
